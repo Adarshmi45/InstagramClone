@@ -1,17 +1,56 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import logo from "../img/logo.png"
 import './signup.css'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { toast } from 'react-toastify';
 
 function Signup() {
-    const fetchData = async () => {
-        const response = await fetch("http://localhost:5000/");
-        const data = await response.json()
-        console.log(data)
+    const navigate = useNavigate()
+    const [name,setName]=useState("")
+    const [email,setEmail]=useState("")
+    const [username,setUsername]=useState("")
+    const [password,setPassword]=useState("")
+
+    const notifyA = (msg) => toast.error(msg)
+    const notifyB = (msg) => toast.success(msg)
+
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+
+    const postData=()=>{
+        if(!emailRegex.test(email)){
+            notifyA("Invalid Email")
+            return
+        }else if (!passRegex.test(password)){
+            notifyA("Password must contain 8 characters,including atleast 1 number and 1 includes both lower and uppercase letters and special characters for example #,?,!")
+            return
+        }
+
+
+        fetch("http://localhost:5000/signup",{
+            method:"post",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                name:name,
+                username:username,
+                email:email,
+                password:password
+            })
+        }).then(res=>res.json())
+        .then(data => {
+            if(data.error){
+                notifyA(data.error)
+            }else{
+                notifyB(data.message)
+                navigate("/signin")
+            }
+            
+            console.log(data)})
+        
     }
-    useEffect(() => {
-        fetchData()
-    }, [])
+
     return (
         <div className="signup">
             <div className='form-container'>
@@ -19,21 +58,21 @@ function Signup() {
                     <img className="Signup_logo" src={logo} alt="" />
                     <p className='loginPara'>Sign up to see photos and videos <br />from your friends</p>
                     <div>
-                        <input type="email" name='email' id="email" placeholder='Email' />
+                        <input type="email" name='email' id="email" value={email} placeholder='Email' onChange={(e)=>{setEmail(e.target.value)}} />
                     </div>
                     <div>
-                        <input type="text" name='name' id="name" placeholder='Full Name' />
+                        <input type="text" name='name' id="name" placeholder='Full Name' value={name} onChange={((e)=>{setName(e.target.value)})} />
                     </div>
                     <div>
-                        <input type="text" name='useranme' id="useranme" placeholder='Useranme' />
+                        <input type="text" name='useranme' id="useranme" placeholder='Useranme' value={username} onChange={(e)=>{setUsername(e.target.value)}} />
                     </div>
                     <div>
-                        <input type="password" name='password' id="password" placeholder='Password' />
+                        <input type="password" name='password' id="password" placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}} />
                     </div>
 
                     <p className='loginPara' style={{ fontSize: "12px", margin: "3px 0px" }}>By signing up you agree to our Terms, <br />privacy policies and cookies.</p>
 
-                    <input type="submit" id="submit-btn" value="Sign Up" />
+                    <input type="submit" id="submit-btn" value="Sign Up" onClick={()=>{postData()}} />
                 </div>
                 <div className='form2'>
                     Already have an account ?<Link to="/signin"> <span style={{ color: "blue", cursor: "pointer" }}>Sign In</span></Link>

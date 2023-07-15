@@ -6,6 +6,8 @@ import Home from './components/Home';
 import Signup from './components/signup';
 import Signin from './components/signin';
 import Profile from './components/profile';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <Route path="/signin" element={<Signin/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
+      <ToastContainer theme='dark'/>
     </div>
     </BrowserRouter>
   );
