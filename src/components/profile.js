@@ -19,7 +19,7 @@ function Profile() {
                     </div>
                 </div>
             </div>
-<hr style={{width:"90%",margin:"25px auto",opacity:"0.8"}}/>
+            <hr style={{ width: "90%", margin: "25px auto", opacity: "0.8" }} />
             <div className="gallery">
                 <img src="https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA0fHxmYWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt='' />
                 <img src="https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA0fHxmYWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt='' />
