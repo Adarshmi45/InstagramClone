@@ -26,7 +26,7 @@ function Profile() {
                 </div>
                 <div className="profile-data">
                     <h1>
-                        Ankur Coinbase
+                        {JSON.parse(localStorage.getItem("user")).name}
                     </h1>
                     <div className="profile-info" style={{ display: "flex" }}>
                         <p>40 posts</p>
@@ -38,7 +38,7 @@ function Profile() {
             <hr style={{ width: "90%", margin: "25px auto", opacity: "0.8" }} />
             <div className="gallery">
                 {pic.map((pics) => {
-                    return <img key={pics._id} src={pics.photo} className="item" alt="" key={pics._id} />
+                    return <img key={pics._id} src={pics.photo} className="item"  />
                 })}
             </div>
         </div>
