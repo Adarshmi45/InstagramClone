@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import "./Home.css";
 import { json, useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
+import {Link } from "react-router-dom";
 
 
 function Home() {
@@ -132,7 +133,11 @@ function Home() {
                         <div className="card-pic">
                             <img src="https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA0fHxmYWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt='' />
                         </div>
-                        <h5>{posts.postedBy.name}</h5>
+                        <h5>
+                            <Link to={`/profile/${posts.postedBy._id}`}>
+                            {posts.postedBy.name}
+                            </Link>
+                            </h5>
                     </div>
                     <div className="card-image">
                         <img src={posts.photo} alt='' />
