@@ -4,6 +4,7 @@ import "./profile.css"
 import { useParams } from "react-router-dom";
 
 function UserProfile() {
+    var picLink = "https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
     const { userid } = useParams()
     console.log(userid)
     const [user, setUser] = useState("")
@@ -73,7 +74,7 @@ function UserProfile() {
         <div className="profile">
             <div className="profile-frame">
                 <div className="profile-pic">
-                    <img src="https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA0fHxmYWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt='' />
+                    <img src={user.Photo?user.Photo:picLink} alt='' />
                 </div>
                 <div className="profile-data">
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>

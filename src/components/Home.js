@@ -6,6 +6,7 @@ import {Link } from "react-router-dom";
 
 
 function Home() {
+    var picLink = "https://cdn-icons-png.flaticon.com/128/1144/1144760.png"
     const navigate = useNavigate();
     const [data, setData] = useState([])
     const [comment, setComment] = useState([])
@@ -131,7 +132,7 @@ function Home() {
                     {/* card header */}
                     <div className="card-header" >
                         <div className="card-pic">
-                            <img src="https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjA0fHxmYWNlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt='' />
+                            <img src={posts.postedBy.Photo? posts.postedBy.Photo :picLink} alt='' />
                         </div>
                         <h5>
                             <Link to={`/profile/${posts.postedBy._id}`}>
