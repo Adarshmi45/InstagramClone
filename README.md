@@ -6,7 +6,6 @@ This is a frontend project for an Instagram clone built using React. The project
 
 ### 1. Clone the repository
 
-```bash
 git clone <repository_url>
 
 ### 2. Navigate to the project directory
