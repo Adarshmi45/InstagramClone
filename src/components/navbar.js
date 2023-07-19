@@ -3,8 +3,10 @@ import logo from "../img/logo.png"
 import "./navbar.css"
 import { Link } from "react-router-dom"
 import { LoginContext } from "../context/LoginContext"
+import {useNavigate} from "react-router-dom"
 
 function Navbar({ login }) {
+    const navigate = useNavigate()
     const { setModalOpen } = useContext(LoginContext)
     const loginStatus = () => {
         const token = localStorage.getItem("jwt")
@@ -33,7 +35,10 @@ function Navbar({ login }) {
 
     return (
         <div className='navbar'>
-            <img src={logo} alt="" />
+            <img src={logo} alt="" 
+            onClick={()=>{
+                navigate("/")
+            }}/>
             <ul className='nav-menu'>
                 {loginStatus()}
             </ul>
