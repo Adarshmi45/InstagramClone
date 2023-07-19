@@ -1,4 +1,4 @@
-# Instagram Clone - README
+# Instagram Clone Frontend- README
 
 This is a frontend project for an Instagram clone built using React. The project includes functionalities like user authentication, posting images, liking posts, and commenting on posts. The frontend communicates with a backend API for data management. The backend API is not included in this repository. Below are the steps to run the frontend project and an overview of its features.
 
